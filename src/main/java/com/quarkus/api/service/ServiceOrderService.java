@@ -42,6 +42,20 @@ public class ServiceOrderService {
     @Transactional
     public void updateStatus(Long id, Status newStatus) {
         ServiceOrder serviceOrder = findById(id);
+
+        if (serviceOrder == null) {
+            throw new IllegalArgumentException("OS não encontrada");
+        }
+
+        if (!isValidStatusTransition(serviceOrder.getStatus(),newStatus)) {
+            throw new IllegalArgumentException("Transição de status inválida");
+        }
+
         serviceOrder.setStatus(newStatus);
+    }
+
+    private boolean isValidStatusTransition(Status oldStatus, Status newStatus) {
+        return (oldStatus == Status.ABERTA && newStatus == Status.EM_ANDAMENTO) ||
+                (oldStatus == Status.EM_ANDAMENTO && newStatus == Status.FINALIZADA);
     }
 }
