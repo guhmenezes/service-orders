@@ -1,0 +1,9 @@
+target/         # Exclui a pasta de build gerada localmente
+.git/           # Exclui a pasta de controle de versão
+.mvn/           # Exclui arquivos do Maven Wrapper (se não estiver usando, pode manter)
+.idea/          # Exclui arquivos de projeto do IntelliJ IDEA
+.vscode/        # Exclui arquivos de projeto do VS Code
+*.iml           # Exclui arquivos de módulo do IntelliJ IDEA
+*.log           # Exclui quaisquer arquivos de log
+Dockerfile      # Exclui o próprio Dockerfile do contexto de build
+docker-compose.yml # Exclui o docker-compose.yml se estiver no mesmo diretório
